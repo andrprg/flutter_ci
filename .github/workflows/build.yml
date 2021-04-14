@@ -1,5 +1,5 @@
 #The name of your workflow.
-name:  Test, build and deploy
+name:  Build
 # Trigger the workflow on push or pull request
 on:   
   push:
