@@ -31,7 +31,8 @@ jobs:
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: coverage/lcov.info
-
+          
+jobs:
     build:
         name: Build APK
         runs-on: ubuntu-latest
