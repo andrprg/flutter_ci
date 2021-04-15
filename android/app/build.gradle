@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
     localPropertiesFile.setProperty('storePassword', System.getenv('KEY_STORE_PASSWORD'));
     localPropertiesFile.setProperty('keyPassword', System.getenv('KEY_PASSWORD'));
     localPropertiesFile.setProperty('keyAlias', System.getenv('ALIAS'));
-    localPropertiesFile.setProperty('storeFile', System.getenv('KEY_PATH'));
+    localPropertiesFile.setProperty('storeFile', System.getenv('STORE_FILE'));
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
