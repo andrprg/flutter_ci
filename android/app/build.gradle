@@ -4,6 +4,11 @@ if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
+}  else {
+    localPropertiesFile.setProperty('storePassword', System.getenv('KEY_STORE_PASSWORD'));
+    localPropertiesFile.setProperty('keyPassword', System.getenv('KEY_PASSWORD'));
+    localPropertiesFile.setProperty('keyAlias', System.getenv('ALIAS'));
+    localPropertiesFile.setProperty('storeFile', System.getenv('STORE_FILE'));
 }
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
