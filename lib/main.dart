@@ -39,7 +39,6 @@ s  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
         title: Text(widget.title),
       ),
       body: Center(
