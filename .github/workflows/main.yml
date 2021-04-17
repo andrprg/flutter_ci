@@ -3,6 +3,8 @@ name:  Test, build and deploy
 # Trigger the workflow on push or pull request
 on:
   push:
+    branches:
+     - develop
     tags-ignore:
      - '*.*.*'
 #A workflow run is made up of one or more jobs. Jobs run in parallel by default.
