@@ -13,7 +13,6 @@ jobs:
     runs-on: macos-latest
     #sequence of tasks called
     steps:
-      - run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
       # The branch or tag ref that triggered the workflow will be checked out.
       # https://github.com/actions/checkout
       - uses: actions/checkout@v1
