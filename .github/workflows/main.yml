@@ -13,7 +13,7 @@ jobs:
     runs-on: macos-latest
     #sequence of tasks called
     steps:
-      name: Released ${{ steps.vars.outputs.tag }}
+      - name: Released ${{ steps.vars.outputs.tag }}
       # The branch or tag ref that triggered the workflow will be checked out.
       # https://github.com/actions/checkout
       - uses: actions/checkout@v1
