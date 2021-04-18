@@ -35,3 +35,21 @@ jobs:
           token: ${{secrets.CODECOV_TOKEN}}
           file: coverage/lcov.info
 
+  build:
+    if: ${{github.ref == 'refs/tags/**'}}
+    needs: test
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - run: flutter build apk --debug --split-per-abi
+      env:
+        KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        ALIAS: ${{ secrets.ALIAS }}
+        STORE_FILE: ${{ secrets.STORE_FILE }}
+      - name: Create a Release APK
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "build/app/outputs/apk/debug/*.apk"
+        token: ${{ secrets.TOKEN }}                    
+
