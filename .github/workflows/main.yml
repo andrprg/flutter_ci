@@ -3,14 +3,14 @@ name:  Test, build and deploy
 # Trigger the workflow on push or pull request
 on:
   push:
-    branches:
-     - develop
+  pull-request:
+
 #A workflow run is made up of one or more jobs. Jobs run in parallel by default.
 jobs:
 
   test:
     #The type of machine to run the job on. [windows,macos, ubuntu , self-hosted]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     #sequence of tasks called
     steps:
       # The branch or tag ref that triggered the workflow will be checked out.
@@ -42,14 +42,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: flutter build apk --debug --split-per-abi
-      env:
-        KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        ALIAS: ${{ secrets.ALIAS }}
-        STORE_FILE: ${{ secrets.STORE_FILE }}
+        env:
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          ALIAS: ${{ secrets.ALIAS }}
+          STORE_FILE: ${{ secrets.STORE_FILE }}
       - name: Create a Release APK
-      uses: ncipollo/release-action@v1
-      with:
-        artifacts: "build/app/outputs/apk/debug/*.apk"
-        token: ${{ secrets.TOKEN }}                    
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/debug/*.apk"
+          token: ${{ secrets.TOKEN }}                    
 
